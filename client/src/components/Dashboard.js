@@ -16,7 +16,9 @@ const Dashboard = () => {
       return (
         <div className="card darken-1" key={survey.title}>
           <div className="card-content">
-            <span className="card-title">{survey.title}</span>
+            <h4>
+              <span className="card-title">{survey.title}</span>
+            </h4>
             <p>{survey.body}</p>
             <p className="right">
               Sent On : {new Date(survey.dateSent).toLocaleDateString()}
