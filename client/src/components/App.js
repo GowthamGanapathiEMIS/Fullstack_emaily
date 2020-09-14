@@ -5,24 +5,32 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./Header";
 import { fetchUser } from "../actions";
 import Landing from "./Landing";
-const SurveyNew = () => <h2>SurveyNew</h2>;
-const DashBoard = () => <h2>DashBoard</h2>;
+import Dashboard from "./Dashboard";
+import SurveyNew from "./surveys/SurveyNew";
+import SurveyFormReview from "./surveys/SurveyFormReview";
 
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUser());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="container">
       <BrowserRouter>
-        <Route path="/" component={Header} />
-        <Switch>
-          <Route path="/" exact component={Landing} />
-          <Route path="/survey" exact component={DashBoard} />
-          <Route path="/survey/new" exact component={SurveyNew} />
-        </Switch>
+        <div className="container">
+          <Route path="/" component={Header} />
+          <Switch>
+            <Route path="/" exact component={Landing} />
+            <Route path="/survey" exact component={Dashboard} />
+            <Route path="/survey/new" exact component={SurveyNew} />
+            <Route
+              path="/survey/confirmation"
+              exact
+              component={SurveyFormReview}
+            />
+          </Switch>
+        </div>
       </BrowserRouter>
     </div>
   );
